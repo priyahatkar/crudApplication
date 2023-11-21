@@ -1,0 +1,118 @@
+
+
+
+<div mat-dailog-container>
+    <h2>
+        Employee form
+    </h2>
+    <div mat-dailog-content>
+        <div class="row">
+            <div class="col-md-12">
+                <form [formGroup]="empForm" (ngSubmit)="onEmpFormSubmit()">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="example-container">
+                            <mat-form-field appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="fName" placeholder="first name">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput formControlName="lName" placeholder="last Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Enter your email</mat-label>
+                                    <input matInput formControlName="email" placeholder="email">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Contact</mat-label>
+                                    <input matInput formControlName="contact" placeholder="contact">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Date of Birth</mat-label>
+                                    <input matInput formControlName="dateOfBirth" [matDatepicker]="picker1">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Experience</mat-label>
+                                    <input type="number" formControlName="experience" matInput placeholder="experience">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <mat-label>
+                            Genders
+                        </mat-label>
+                        <mat-radio-group aria-label="Select an option" formControlName="gender" class="d-flex mt-3">
+                            <mat-radio-button value="1">Option 1</mat-radio-button>
+                            <mat-radio-button value="2" class="pl-3">Option 2</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Education</mat-label>
+                                    <select matNativeControl formControlName="education">
+                                        <option value="" selected></option>
+                                        <option value="matric">Matric</option>
+                                        <option value="diploma">Diploma</option>
+                                        <option value="graduate">Graduate</option>
+                                        <option value="postGraduate">PostGraduate</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="example-container">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Company</mat-label>
+                                    <input matInput formControlName="company" placeholder="Company">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button mat-raised-button color="warn" type="button" 
+                            (click)="onCloseForm()"
+                            class="btn-block">Cancel</button>
+                        </div>
+                        <div class="col-6 m-0">
+                            <button mat-raised-button color="primary" type="submit" 
+                            *ngIf="!editMode" class="btn-block">Save</button>
+                            <button mat-raised-button color="primary" *ngIf="editMode"
+                            type="button" class="btn-block" (click)="onUpdateEmpInfo()">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

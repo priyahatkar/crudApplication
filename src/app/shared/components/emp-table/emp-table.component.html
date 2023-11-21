@@ -1,0 +1,63 @@
+
+
+
+        
+
+
+<div class="container-fluid">
+    <div class="mt-5">
+        <div class="form-group">
+            <mat-form-field appearance="fill" class="filterForm">
+                <mat-label>Filter</mat-label>
+                <input matInput [(ngModel)]="searchFilterTodo" placeholder="Ex.ium">
+            </mat-form-field>
+        </div>
+    </div>
+        <table matSort class="table mt-3">
+            <thead>
+                <tr>
+                    <th mat-sort-header="fName">First Name</th>
+                    <th mat-sort-header="lName">Last Name</th>
+                    <th mat-sort-header="contact">Contact</th>
+                    <th mat-sort-header="email">Email</th>
+                    <th mat-sort-header="dOfBirth">Date Of Birth</th>
+                    <th mat-sort-header="gender">Gender</th>
+                    <th mat-sort-header="experience">Experience</th>
+                    <th mat-sort-header="education">Education</th>
+                    <th mat-sort-header="company">Company</th>
+                    <th mat-sort-header="action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="empInfo.length > 0; else empData">
+                    <tr *ngFor="let emp of empInfo |emp : searchFilterTodo">
+                        <td>{{emp.fName}}</td>
+                        <td>{{emp.lName}}</td>
+                        <td>{{emp.contact}}</td>
+                        <td>{{emp.email}}</td>
+                        <td>{{emp.gender}}</td>
+                        <td>{{emp.dateOfBirth | date}}</td>
+                        <td>{{emp.experience}}</td>
+                        <td>{{emp.education}}</td>
+                        <td>{{emp.company}}</td>
+                        <td class="d-flex justify-content-between">
+                            <button mat-fab color="primary" (click)="onEditEmpInfo(emp)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-fab color="warn" (click)="onDeleteEmp(emp.id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </table>
+        
+</div>
+
+
+
+<ng-template #empData>
+    <p class="mt-3 text-center">No data matching the filter "{{searchFilterTodo}}"</p>
+</ng-template> 

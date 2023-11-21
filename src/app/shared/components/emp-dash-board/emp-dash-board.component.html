@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <span class="pri-heading">
+        CRUD Application
+    </span>
+    <span class="textright"></span>
+        <button mat-flat-button color="warn" (click)="openEmpForm()">
+        Add Employee
+    </button>
+</mat-toolbar>
+
+<app-emp-table [empInfo]="employeArray" 
+(emitEmployee)="emitEditEmpInfo($event)"
+(emitDeleteEmployee)="onDeleteEmpInfo($event)"></app-emp-table>
